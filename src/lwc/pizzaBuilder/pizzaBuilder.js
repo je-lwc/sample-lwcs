@@ -67,7 +67,6 @@ export default class App extends LightningElement {
   }
 
   renderedCallback() {
-    console.log(this.toppings);
     this.template.querySelectorAll('.toppings input[type="checkbox"]').forEach((el) => {
       if (this.toppings.includes(el.value)) {
         el.checked = true;
