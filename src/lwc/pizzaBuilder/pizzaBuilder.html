@@ -40,7 +40,7 @@
       <div>
         <fieldset>
           <legend>Toppings</legend>
-          <label for:each={toppingOptions} for:item={o} key={o.value}>
+          <label for:each={toppingOptions} for:item="o" key={o.value}>
             {o.label}
             <input type="checkbox" value={o.value} />
           </label>
