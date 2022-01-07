@@ -1,0 +1,16 @@
+<template>
+  <div class="app slds-p-around_x-large">
+    <form>
+      <div>
+        <lightning-combobox
+          name="Size"
+          label="Size"
+          options={sizeOptions}
+          onchange={handleSizeSelection}
+        >
+        </lightning-combobox>
+      </div>
+      <label>Crust: </label>
+    </form>
+  </div>
+</template>
