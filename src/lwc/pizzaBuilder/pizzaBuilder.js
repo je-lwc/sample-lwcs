@@ -8,9 +8,36 @@ const size = [
 ];
 
 const crust = [
-  { label: 'Thin Crust', value: 'Thin' },
-  { label: 'Original Crust', value: 'Original' },
-  { label: 'Crunchy Crispy', value: 'Crunchy' }
+  {
+    label: 'Thin Crust',
+    value: 'Thin',
+    price: [
+      { size: '10"', value: 6 },
+      { size: '12"', value: 8 },
+      { size: '14"', value: 10 },
+      { size: '16"', value: 12 }
+    ]
+  },
+  {
+    label: 'Original Crust',
+    value: 'Original',
+    price: [
+      { size: '10"', value: 5 },
+      { size: '12"', value: 5 },
+      { size: '14"', value: 6 },
+      { size: '16"', value: 7 }
+    ]
+  },
+  {
+    label: 'Crunchy Crispy',
+    value: 'Crunchy',
+    price: [
+      { size: '10"', value: 15 },
+      { size: '12"', value: 15 },
+      { size: '14"', value: 15 },
+      { size: '16"', value: 15 }
+    ]
+  }
 ];
 
 const toppingFilters = [
@@ -20,27 +47,27 @@ const toppingFilters = [
 ];
 
 const toppings = [
-  { label: 'Pepperoni', value: 'Pepperoni', type: 'Meat' },
-  { label: 'Sausage', value: 'Sausage', type: 'Meat' },
-  { label: 'Beef Crumble', value: 'Beef Crumble', type: 'Meat' },
-  { label: 'Ham', value: 'Ham', type: 'Meat' },
-  { label: 'Bacon', value: 'Bacon', type: 'Meat' },
-  { label: 'Chicken', value: 'Chicken', type: 'Meat' },
-  { label: 'Philly Steak', value: 'Philly Steak', type: 'Meat' },
-  { label: 'Anchovy', value: 'Anchovy', type: 'Meat' },
-  { label: 'Cheddar', value: 'Cheddar', type: 'Dairy' },
-  { label: 'Feta', value: 'Feta', type: 'Dairy' },
-  { label: 'Parmesan Asiago', value: 'Parmesan Asiago', type: 'Dairy' },
-  { label: 'Provolone', value: 'Provolone', type: 'Dairy' },
-  { label: 'Hot Banana Peppers', value: 'Hot Banana Peppers', type: 'Vege' },
-  { label: 'Black Olives', value: 'Black Olives', type: 'Vege' },
-  { label: 'Green Olives', value: 'Green Olives', type: 'Vege' },
-  { label: 'Green Pepper', value: 'Green Pepper', type: 'Vege' },
-  { label: 'Mushroom', value: 'Mushroom', type: 'Vege' },
-  { label: 'Pineapple', value: 'Pineapple', type: 'Vege' },
-  { label: 'Onion', value: 'Onion', type: 'Vege' },
-  { label: 'Tomatoes', value: 'Tomatoes', type: 'Vege' },
-  { label: 'Spinach', value: 'Spinach', type: 'Vege' }
+  { label: 'Pepperoni', value: 'Pepperoni', type: 'Meat', price: 3.05 },
+  { label: 'Sausage', value: 'Sausage', type: 'Meat', price: 3.05 },
+  { label: 'Beef Crumble', value: 'Beef Crumble', type: 'Meat', price: 4.79 },
+  { label: 'Ham', value: 'Ham', type: 'Meat', price: 3.05 },
+  { label: 'Bacon', value: 'Bacon', type: 'Meat', price: 3.05 },
+  { label: 'Chicken', value: 'Chicken', type: 'Meat', price: 5.29 },
+  { label: 'Philly Steak', value: 'Philly Steak', type: 'Meat', price: 6.99 },
+  { label: 'Anchovy', value: 'Anchovy', type: 'Meat', price: 6.99 },
+  { label: 'Cheddar', value: 'Cheddar', type: 'Dairy', price: 1.29 },
+  { label: 'Feta', value: 'Feta', type: 'Dairy', price: 1.29 },
+  { label: 'Parmesan Asiago', value: 'Parmesan Asiago', type: 'Dairy', price: 1.59 },
+  { label: 'Provolone', value: 'Provolone', type: 'Dairy', price: 2.39 },
+  { label: 'Hot Banana Peppers', value: 'Hot Banana Peppers', type: 'Vege', price: 1 },
+  { label: 'Black Olives', value: 'Black Olives', type: 'Vege', price: 0.99 },
+  { label: 'Green Olives', value: 'Green Olives', type: 'Vege', price: 0.99 },
+  { label: 'Green Pepper', value: 'Green Pepper', type: 'Vege', price: 0.99 },
+  { label: 'Mushroom', value: 'Mushroom', type: 'Vege', price: 0.99 },
+  { label: 'Pineapple', value: 'Pineapple', type: 'Vege', price: 0.99 },
+  { label: 'Onion', value: 'Onion', type: 'Vege', price: 0.99 },
+  { label: 'Tomatoes', value: 'Tomatoes', type: 'Vege', price: 2.99 },
+  { label: 'Spinach', value: 'Spinach', type: 'Vege', price: 1.99 }
 ];
 export default class App extends LightningElement {
   get sizeOptions() {
