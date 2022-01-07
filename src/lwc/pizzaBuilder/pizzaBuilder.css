@@ -3,6 +3,6 @@
   flex-direction: column;
 }
 
-input[type='checkbox'] {
-  
+legend {
+  font-weight: 700;
 }

@@ -13,6 +13,12 @@ const crust = [
   { label: 'Crunchy Crispy', value: 'Crunchy' }
 ];
 
+const toppingFilters = [
+  { label: 'Non-Vegetarian', value: '' },
+  { label: 'Vegetarian', value: 'Vegetarian' },
+  { label: 'Vegan', value: 'Vegan' }
+];
+
 const toppings = [
   { label: 'Pepperoni', value: 'Pepperoni', type: 'Meat' },
   { label: 'Sausage', value: 'Sausage', type: 'Meat' },
@@ -44,11 +50,9 @@ export default class App extends LightningElement {
     return [...crust];
   }
 
-  toppingFilters = [
-    { label: 'Non-Vegetarian', value: '' },
-    { label: 'Vegetarian', value: 'Vegetarian' },
-    { label: 'Vegan', value: 'Vegan' }
-  ];
+  get toppingFilters() {
+    return [...toppingFilters];
+  }
 
   get toppingOptions() {
     return toppings.filter((el) => {

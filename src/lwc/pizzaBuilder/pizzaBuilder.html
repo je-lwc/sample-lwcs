@@ -26,29 +26,29 @@
         </lightning-radio-group>
       </div>
       <div>
-        <lightning-radio-group
-          name="Crust"
-          label="Crust"
-          options={crustOptions}
-          onchange={handleCrustSelection}
-          value={crust}
-          type="radio"
-          required
-        >
-        </lightning-radio-group>
-      </div>
-      <div>
         <fieldset>
           <legend>Toppings</legend>
-          <label
-            for:each={toppingOptions}
-            for:item="o"
-            key={o.value}
-            class="slds-form-element__label"
+          <lightning-radio-group
+            name="Filter"
+            label=""
+            options={toppingFilters}
+            onchange={handleToppingFilter}
+            value={toppingFilter}
+            type="radio"
+            required
           >
-            <input type="checkbox" value={o.value} />
-            &nbsp;{o.label}
-          </label>
+          </lightning-radio-group>
+          <div class="checkbox-set">
+            <label
+              for:each={toppingOptions}
+              for:item="o"
+              key={o.value}
+              class="slds-form-element__label"
+            >
+              <input type="checkbox" value={o.value} />
+              &nbsp;{o.label}
+            </label>
+          </div>
         </fieldset>
       </div>
     </form>
