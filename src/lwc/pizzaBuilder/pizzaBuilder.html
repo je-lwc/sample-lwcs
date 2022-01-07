@@ -7,11 +7,22 @@
           label="Size"
           options={sizeOptions}
           onchange={handleSizeSelection}
-          
+          value={size}
+          required
         >
         </lightning-combobox>
       </div>
-      <label>Crust: </label>
+      <div>
+        <lightning-combobox
+          name="Crust"
+          label="Crust"
+          options={crustOptions}
+          onchange={handleCrustSelection}
+          value={crust}
+          required
+        >
+        </lightning-combobox>
+      </div>
     </form>
   </div>
 </template>

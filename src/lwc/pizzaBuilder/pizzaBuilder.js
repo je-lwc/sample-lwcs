@@ -16,5 +16,10 @@ export default class App extends LightningElement {
   size = '10"';
   crust = 'Original';
 
-  handleSizeSelection() {}
+  handleSizeSelection({ detail: { value } }) {
+    this.size = value;
+  }
+  handleCrustSelection({ detail: { value } }) {
+    this.crust = value;
+  }
 }
