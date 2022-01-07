@@ -2,27 +2,30 @@
   <div class="app slds-p-around_x-large">
     <form>
       <div>
-        <lightning-combobox
+        <lightning-radio-group
           name="Size"
           label="Size"
           options={sizeOptions}
           onchange={handleSizeSelection}
           value={size}
+          type="radio"
           required
         >
-        </lightning-combobox>
+        </lightning-radio-group>
       </div>
       <div>
-        <lightning-combobox
+        <lightning-radio-group
           name="Crust"
           label="Crust"
           options={crustOptions}
           onchange={handleCrustSelection}
           value={crust}
+          type="radio"
           required
         >
-        </lightning-combobox>
+        </lightning-radio-group>
       </div>
+      <div></div>
     </form>
   </div>
 </template>
