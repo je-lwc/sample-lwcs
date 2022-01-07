@@ -66,6 +66,14 @@ export default class App extends LightningElement {
     });
   }
 
+  renderedCallback() {
+    this.template.querySelectorAll('.toppings input[type="checkbox"]').forEach((el) => {
+      if (this.toppings.includes(el.value)) {
+        el.checked = true;
+      }
+    });
+  }
+
   size = '12"';
   crust = 'Original';
   toppingFilter = '';
@@ -79,5 +87,12 @@ export default class App extends LightningElement {
   }
   handleToppingFilter({ detail: { value } }) {
     this.toppingFilter = value;
+  }
+  handleToppingSelection({ currentTarget: { value, checked } }) {
+    if (checked) {
+      this.toppings = [...this.toppings, value];
+    } else {
+      this.toppings = this.toppings.filter((v) => v !== value);
+    }
   }
 }

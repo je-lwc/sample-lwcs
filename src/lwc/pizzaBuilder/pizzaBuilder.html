@@ -26,7 +26,7 @@
         </lightning-radio-group>
       </div>
       <div>
-        <fieldset>
+        <fieldset class="toppings">
           <legend>Toppings</legend>
           <lightning-radio-group
             name="Filter"
@@ -44,7 +44,7 @@
               key={o.value}
               class="slds-form-element__label"
             >
-              <input type="checkbox" value={o.value} />
+              <input type="checkbox" value={o.value} onchange={handleToppingSelection} />
               &nbsp;{o.label}
             </label>
           </div>
