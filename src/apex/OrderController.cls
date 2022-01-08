@@ -34,10 +34,10 @@ public with sharing class OrderController {
 
     public SaveOrder(Order order) {
       o = new Order__c(
-        Opportunity__c = order.opportunityId;
-        OrderDate__c = order.timestamp;
-        Tracking_Key__c = order.orderId;
-      )
+        Opportunity__c = order.opportunityId,
+        OrderDate__c = order.timestamp,
+        Tracking_Key__c = order.orderId
+      );
     }
 
     public void execute(QueueableContext ctx) {
