@@ -10,7 +10,7 @@ public without sharing class OrderControllerTest {
     TestObjectHelper.createPersistentOpportunity(opportunityName);
   }
 
-  static Continuation callPlaceOrder() {
+  static Order getTestOrder() {
     Opportunity o = [SELECT Id FROM Opportunity WHERE Name = :opportunityName];
     Order order = new Order();
     Pizza pizza = new Pizza();
@@ -25,7 +25,11 @@ public without sharing class OrderControllerTest {
     pizza.toppings.add('Bacon');
     pizza.toppings.add('Cheddar');
     pizza.toppings.add('Pineapple');
-    return (Continuation) OrderController.placeOrder(order);
+    return order;
+  }
+
+  static Continuation callPlaceOrder() {
+    return (Continuation) OrderController.placeOrder(getTestOrder());
   }
 
   static String placeOrderProxyCallback() {
@@ -51,18 +55,20 @@ public without sharing class OrderControllerTest {
     // store request label for callback method to use
     conLabels.put(makePaymentCallbackLabel, label);
     // set mock response for the request
-    HttpCalloutMock mock = new GenericHttpMock(200, body, null);
+    HttpCalloutMock mock = new GenericHttpMock(201, body, null);
     HttpResponse response = mock.respond(request);
     Test.setContinuationResponse(label, response);
     // using the test class as proxy to invoke callback method
     String result = (String) Test.invokeContinuationMethod(new OrderControllerTest(), con);
     /*-- End boiler place code for continuation test --*/
+    Test.stopTest();
     System.assert(result == API_ORDER_ID, 'should receive order id from API');
   }
 
   @IsTest
   public static void placeOrderErrorTest() {
     Exception err = null;
+    String body = '{"message":"Inerval Server Error."}';
     Test.startTest();
     /*-- Start boiler plate code for continuation test --*/
     // call the caller method and get continuation
@@ -85,6 +91,7 @@ public without sharing class OrderControllerTest {
       err = e;
     }
     /*-- End boiler place code for continuation test --*/
+    Test.stopTest();
     System.assert(err != null, 'Should throw exception');
   }
 }
