@@ -29,6 +29,17 @@ public with sharing class OrderController {
     // ... Implementation code omitted
   }
 
+  @AuraEnabled
+  public static cancelOrder(Id opportunityId) {
+    UxApiHelper.RequestParams req = new UxApiHelper.RequestParams();
+    req.method = UxApiHelper.HttpMethod.HTTP_PUT;
+    req.path = 'order';
+    HttpResponse res = UxApiHelper.sendRequest(req);
+    if (res.getStatusCode() < 200 || res.getStatusCode() > 299) {
+      throw new AuraHandledException('API error occurred');
+    }
+  }
+
   class SaveOrderJob implements Queueable, Database.AllowsCallouts {
     Order__c o;
 

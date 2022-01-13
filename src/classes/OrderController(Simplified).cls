@@ -1,6 +1,6 @@
 public with sharing class OrderController {
   @AuraEnabled
-  public static Object placeOrder(Order order) {
+  public static String placeOrder(Order order) {
     UxApiHelper.RequestParams req = new UxApiHelper.RequestParams();
     req.method = UxApiHelper.HttpMethod.HTTP_POST;
     req.path = 'order';
@@ -23,6 +23,17 @@ public with sharing class OrderController {
   @AuraEnabled(Cacheable=true)
   public static List<Toppings> getToppings() {
     // ... Implementation code omitted
+  }
+
+  @AuraEnabled
+  public static cancelOrder(Id opportunityId) {
+    UxApiHelper.RequestParams req = new UxApiHelper.RequestParams();
+    req.method = UxApiHelper.HttpMethod.HTTP_PUT;
+    req.path = 'order';
+    HttpResponse res = UxApiHelper.sendRequest(req);
+    if (res.getStatusCode() < 200 || res.getStatusCode() > 299) {
+      throw new AuraHandledException('API error occurred');
+    }
   }
 
   class SaveOrderJob implements Queueable, Database.AllowsCallouts {
