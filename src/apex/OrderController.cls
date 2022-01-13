@@ -11,22 +11,22 @@ public with sharing class OrderController {
   public static String placeOrderCallback(Object state) {
     try {
       HttpResponse res = Continuation.getResponse((String) state);
-      if (response.getStatusCode() < 200 || response.getStatusCode() > 299) {
-        System.debug(response.getBody());
+      if (res.getStatusCode() < 200 || res.getStatusCode() > 299) {
+        System.debug(res.getBody());
         throw new AuraHandledException('API error occurred');
       }
-      Order order = Order.getFromJSON(response.getBody());
+      Order order = Order.getFromJSON(res.getBody());
       System.enqueueJob(new SaveOrderJob(order));
       return order.orderId;
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.debug(e);
     }
     return null;
   }
 
   @AuraEnabled(Cacheable=true)
-  public static List<Toppings> getToppings(){
-    // ...
+  public static List<Toppings> getToppings() {
+    // ... Implementation code omitted
   }
 
   class SaveOrderJob implements Queueable, Database.AllowsCallouts {
