@@ -30,6 +30,7 @@ public with sharing class OrderController {
     UxApiHelper.RequestParams req = new UxApiHelper.RequestParams();
     req.method = UxApiHelper.HttpMethod.HTTP_PUT;
     req.path = 'order';
+    req.body = '{"referenceId":"' + opportunityId + '", "status":"cancelled"}';
     HttpResponse res = UxApiHelper.sendRequest(req);
     if (res.getStatusCode() < 200 || res.getStatusCode() > 299) {
       throw new AuraHandledException('API error occurred');
