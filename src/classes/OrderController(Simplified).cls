@@ -4,6 +4,7 @@ public with sharing class OrderController {
     UxApiHelper.RequestParams req = new UxApiHelper.RequestParams();
     req.method = UxApiHelper.HttpMethod.HTTP_POST;
     req.path = 'order';
+    req.body = order.toString();
 
     try {
       HttpResponse res = UxApiHelper.sendRequest(req);
