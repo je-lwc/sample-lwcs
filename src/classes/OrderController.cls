@@ -44,7 +44,7 @@ public with sharing class OrderController {
   class SaveOrderJob implements Queueable, Database.AllowsCallouts {
     Order__c o;
 
-    public SaveOrder(Order order) {
+    public SaveOrderJob(Order order) {
       o = new Order__c(
         Opportunity__c = order.opportunityId,
         OrderDate__c = order.timestamp,
