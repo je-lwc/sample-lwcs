@@ -69,7 +69,7 @@ const toppings = [
   { label: 'Tomatoes', value: 'Tomatoes', type: 'Vege', price: 2.99 },
   { label: 'Spinach', value: 'Spinach', type: 'Vege', price: 1.99 }
 ];
-export default class App extends LightningElement {
+export default class PizzaBuilder extends LightningElement {
   get sizeOptions() {
     return [...size];
   }

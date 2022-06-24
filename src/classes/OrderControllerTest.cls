@@ -10,9 +10,9 @@ public without sharing class OrderControllerTest {
     TestObjectHelper.createPersistentOpportunity(opportunityName);
   }
 
-  static Order getTestOrder() {
+  static FoodOrder getTestOrder() {
     Opportunity o = [SELECT Id FROM Opportunity WHERE Name = :opportunityName];
-    Order order = new Order();
+    FoodOrder order = new FoodOrder();
     Pizza pizza = new Pizza();
     order.opportunityId = o.Id;
     order.timestamp = System.now();

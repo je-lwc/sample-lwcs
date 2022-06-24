@@ -1,6 +1,6 @@
 public with sharing class OrderController {
   @AuraEnabled
-  public static String placeOrder(Order order) {
+  public static String placeOrder(FoodOrder order) {
     UxApiHelper.RequestParams req = new UxApiHelper.RequestParams();
     req.method = UxApiHelper.HttpMethod.HTTP_POST;
     req.path = 'order';
@@ -12,7 +12,7 @@ public with sharing class OrderController {
         System.debug(res.getBody());
         throw new AuraHandledException('API error occurred');
       }
-      Order order = Order.getFromJSON(res.getBody());
+      FoodOrder order = FoodOrder.getFromJSON(res.getBody());
       System.enqueueJob(new SaveOrderJob(order));
       return order.orderId;
     } catch (Exception e) {
@@ -27,7 +27,7 @@ public with sharing class OrderController {
   }
 
   @AuraEnabled
-  public static cancelOrder(Id opportunityId) {
+  public static void cancelOrder(Id opportunityId) {
     UxApiHelper.RequestParams req = new UxApiHelper.RequestParams();
     req.method = UxApiHelper.HttpMethod.HTTP_PUT;
     req.path = 'order';
@@ -39,10 +39,10 @@ public with sharing class OrderController {
   }
 
   class SaveOrderJob implements Queueable, Database.AllowsCallouts {
-    Order__c o;
+    FoodOrder__c o;
 
     public SaveOrder(Order order) {
-      o = new Order__c(
+      o = new FoodOrder__c(
         Opportunity__c = order.opportunityId,
         OrderDate__c = order.timestamp,
         Tracking_Key__c = order.orderId

@@ -1,4 +1,4 @@
-public with sharing class Order {
+public with sharing class FoodOrder {
   @AuraEnabled
   public Id opportunityId;
 
@@ -46,8 +46,8 @@ public with sharing class Order {
     return jg.getAsString();
   }
 
-  public static Order getFromJSON(String json) {
-    Order o = new Order();
+  public static FoodOrder getFromJSON(String json) {
+    FoodOrder o = new FoodOrder();
     Map<String, Object> m = (Map<String, Object>) JSON.deserializeUntyped(json);
     o.opportunityId = String.valueOf(m.get('referenceId'));
     o.timestamp = DateTimeHelper.stringToDateTime(m.get('orderDateTime'));
